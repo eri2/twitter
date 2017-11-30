@@ -1,0 +1,86 @@
+body {
+    background-image: url('../assets/images/mountain.jpg');
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+}
+
+header {
+    background: #61D3F0;
+    height: 60px;
+    width: 100%;
+}
+
+header p {
+    color: white;
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+}
+
+#wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 30px;
+}
+
+#profile {
+    background: white;
+    border-radius: 5px;
+    height: 220px;
+    margin-right: 30px;
+    padding-left: 30px;
+}
+
+#profile h1 {
+    padding-bottom: 0px;
+}
+
+#profile p {
+    padding-top: 0px;
+}
+
+#profile h4 {
+    color: #547687;
+}
+
+#send-twitt {
+    background: white;
+    border-radius: 5px;
+    height: 220px;
+    margin-left: 30px;
+}
+
+#send-twitt button {
+    background: #61D3F0;
+    border: none;
+    color: white;
+    display: block;
+    margin-top: 2%;
+    margin-left: 5%;
+    height: 30px;
+    width: 60px;
+}
+
+input[type="text"] {
+    margin-top: 50px;
+    margin-left: 20px;
+    display: block;
+}
+
+#time-line div {
+    background: white;
+    border-radius: 5px;
+    max-height: 100px;
+    margin: 15px 30px;
+}
+
+#time-line div p {
+    padding: 10px 20px;
+    margin: 0px;
+}
+
+#time-line span {
+    display: block;
+    padding: 10px 20px;
+    margin: 0px;
+}

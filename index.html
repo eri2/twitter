@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto+Slab" rel="stylesheet">
     <link rel="icon" type="image/gif" href="assets/images/twitter.png" />
     <script src="https://use.fontawesome.com/f164699f24.js"></script>
-
 </head>
 
 <body>
@@ -22,11 +21,12 @@
             <p>soy front-end developer jr.</p>
             <h4>CÓDIGO</h4>
         </div>
-        <div id="send-twitt">
+        <div id="send-twitt" contenteditable="true">
             <form id="add-tweet">
-                <input type="text" name="tweet">
-                <button id="btn">TWEET</button>
+                <textarea id="tweet" rows="2" cols="40"></textarea>
+                <button id="btn" disabled="true">TWEET</button>
             </form>
+            <span id="character-count">140</span>
         </div>
     </section>
     <section id="time-line">

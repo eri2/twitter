@@ -50,8 +50,11 @@ header p {
     margin-left: 30px;
 }
 
+textarea {
+    resize: none;
+}
+
 #send-twitt button {
-    background: #61D3F0;
     border: none;
     color: white;
     display: block;

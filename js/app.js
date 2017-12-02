@@ -1,5 +1,68 @@
+//Seleccionar los elementos del html para manipularlos con js
+var addTweet = document.forms['add-tweet'];
+var textArea = document.getElementById('tweet');
+var timeLine = document.getElementById('time-line');
+var counterNumber = document.getElementById('character-count')
+var button = document.getElementById('btn')
+
+//Evento para identificar el click en el formulario del tweet
+addTweet.addEventListener('submit', printTweet);
+
+//Evento para identificar el número de veces que se presiona una tecla
+textArea.addEventListener('keyup', counter)
+
+//Evento para identificar el click 
+button.addEventListener('click', clearCounter)
+
+//Evento que identifica cambios en la textarea
+textArea.addEventListener('input', resizeTextarea);
+
+//Función que resetea el contador cada vez que se publica un tweet
+function clearCounter() {
+    counterNumber.textContent = 140;
+}
+
+//Función que se desencadena al picarle al botón del formulario que crea los elementos para el nuevo tweet, asigna el contenido del textarea e imprime fecha
+function printTweet(e) {
+    e.preventDefault();
+    var newTweet = document.createElement('div');
+    var tweetText = document.createElement('p');
+    var timeTweet = document.createElement('span');
+    var time = getDate();
+    tweetText.textContent = textArea.value;
+    timeTweet.textContent = time;
+    newTweet.appendChild(tweetText);
+    newTweet.appendChild(timeTweet);
+    timeLine.prepend(newTweet);
+    textArea.value = ' ';
+    console.log(textArea.value.indexOf("\n"));
+};
+
+//Botón desabilitado (se asignó ese atributo en HTML y por eso se establece su color como gris)
+button.style.backgroundColor = 'grey';
+//Función para contar caracteres y cambiar el color según el número de caracteres, habilitar el botón si se introducen caracteres a la textarea.
+function counter() {
+    var characters = textArea.value.split('');
+    counterNumber.innerText = 140 - (characters.length);
+    if (characters.length >= 120 && characters.length < 130) {
+        counterNumber.style.color = 'yellow';
+    } else if (characters.length >= 130 && characters.length < 140) {
+        counterNumber.style.color = 'red';
+    } else if (characters.length < 120) {
+        counterNumber.style.color = 'black';
+    }
+    if (characters.length > 0) {
+        button.removeAttribute('disabled')
+        button.style.backgroundColor = 'blue';
+    }
+    if (textArea.value == '' || textArea.value[0] == "\n" || characters.length > 140) {
+        button.setAttribute('disabled', 'true');
+        button.style.backgroundColor = 'grey';
+    }
+}
+
 //Función para obtener la hora con formato hh:mm 
-function printDate() {
+function getDate() {
     var time = new Date();
     var hours = time.getHours();
     var minutes = time.getMinutes();
@@ -16,23 +79,8 @@ function printDate() {
     return hours + ':' + minutes + ' ' + meridian;
 }
 
-//Función que agrega evento al botón / formulario e incorpora el texto al html
-
-var addTweet = document.forms['add-tweet'];
-addTweet.addEventListener('submit', function(e) {
-    e.preventDefault();
-    var value = addTweet.querySelector('input[type="text"]').value;
-    var timeLine = document.getElementById('time-line');
-    var newTweet = document.createElement('div');
-    var tweetText = document.createElement('p');
-    var timeTweet = document.createElement('span');
-    var time = printDate();
-    tweetText.textContent = value;
-    timeTweet.textContent = time;
-    newTweet.appendChild(tweetText);
-    newTweet.appendChild(timeTweet);
-    timeLine.prepend(newTweet);
-});
-
-//Función para deshabilitar botón
-//document.getElementById("myBtn").disabled = true;
+//Función de autoajuste para la textarea
+function resizeTextarea() {
+    this.style.height = '24px';
+    this.style.height = this.scrollHeight + 12 + 'px';
+}
